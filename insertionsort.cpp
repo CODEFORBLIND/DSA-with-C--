@@ -21,25 +21,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// void insertionSort(int n, int arr[]){
-//     vector<int> arr1(n);
-//     arr1[0] = arr[0];
-//     for (int i = 1; i < n; i++)
-//     {
-//         if(arr[1] > arr1[0]){
-//             arr1[1] = arr[1];
-//         }
-//         else{
-//             arr1[0] = arr[1];
-//             arr1[1] = arr[0];
-//         }
-//     }
-
-//     cout << "Sorted array: ";
-//     for(int i = 0; i<n; i++){
-//         cout << arr1[i] << " ";
-//     }
-// }
+void insertionSort(int n, int arr[]){
+    for (int i = 0; i < n-1; i++)
+    {
+        int key = arr[i+1];
+        // cout <<"Key is "<< key << endl;
+        for (int j = 0; j <= i; j++)
+        {
+            if(arr[j] > key){
+                // cout << arr[j] << " " << arr[j+1] << endl;
+                swap(arr[j], arr[i+1]);
+                // cout << arr[j] << " " << arr[j+1] << endl;
+            }
+        }
+    }
+    
+}
 
 int main(){
     int n;
@@ -51,12 +48,12 @@ int main(){
         cin >> arr[i];
     }
 
-    // insertionSort(n, arr);
+    insertionSort(n, arr);
 
 
-    // cout << "Sorted array: ";
-    // for(int i = 0; i<n; i++){
-    //     cout << arr1[i] << " ";
-    // }
+    cout << "Sorted array: ";
+    for(int i = 0; i<n; i++){
+        cout << arr[i] << " ";
+    }
 return 0;
 }
