@@ -71,32 +71,19 @@ public:
         }
     }
 
-    void deletelast(){
+    void searchelem(int val){
         Node* temp = head;
-        if(!head){
-            return;
-        } else if(listSize() == 1){
-            head = tail = nullptr;
-        } else{
-            while(temp->next->next != nullptr){
-                temp = temp->next;
+        while(temp != nullptr){
+            if(temp->data == val){
+                cout << "Present";
+                return;
+            } else{
+                temp = temp->next;  
             }
-            delete temp->next;
-            temp->next = nullptr;
         }
+        cout << "Not present";
     }
 
-    void deletefirst(){
-        Node* temp = head;
-        if(!head){
-            return;
-        } else if(listSize() == 1){
-            head = tail = nullptr;
-        } else{
-            head = head->next;
-            delete temp;
-        }
-    }
 
     void printLinkedList(){
         Node* temp = head;
@@ -122,12 +109,7 @@ int main(){
     list.append(30);
     list.printLinkedList();
     list.listSize();
-    // list.deletelast();
-    // cout << "List after deletion of last element: " << endl;
-    // list.printLinkedList();
-    list.deletefirst();
-    cout << "List after deletion of first element: " << endl;
-    list.printLinkedList();
+    list.searchelem(10);
 
 
 return 0;
