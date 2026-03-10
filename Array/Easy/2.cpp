@@ -26,43 +26,83 @@ class findSecondMaxMin{
         return;
         }
 
-        for(int i=0; i<n; i++){
+        int i = 0;
+        while (i < n-1)
+        {
             if(arr1[i] == arr1[i+1]){
-                cout << "No second max found as all elements are equal" << endl;
-                return;
+                i++;
+            } else{ 
+                break;
             }
+        }
+        if(i == n-1){
+            cout << "No second max found as all elements are equal" << endl;
+            return;
+        }
+
+        for(int i=0; i<n; i++){
             if(arr1[i] > max){
                 secondmax = max;
                 max = arr1[i];
-                cout << "Maximum is " << max << endl;
             }
             else if(arr1[i] > secondmax && arr1[i]!= max){
                 secondmax = arr1[i];
-                cout << "Second Maximum is " << secondmax << endl;
             }
         }
+        cout << "Maximum is " << max << endl;
+        cout << "Second Maximum is " << secondmax << endl;
     }
 
-//     void findSecondMin(int* arr1, int n){
-//         int min = arr1[0];
-//         for(int i=0; i<n; i++){
-//             if(arr1[i] > min){
-//                 min = arr1[i];
-//             }
-//         }
-//         cout << "Second Minimum is: " << min << endl;
-//     }
+
+
+    void findSecondMin(int* arr1, int n){
+        int min = arr1[0];
+        int secondmin = INT_MIN; // setting it to the lowest possible value
+        if (n < 2) {
+        cout << "Array needs to have at least two elements." << endl;
+        return;
+        }
+
+        int i = 0;
+        while (i < n-1)
+        {
+            if(arr1[i] == arr1[i+1]){
+                i++;
+            } else{ 
+                break;
+            }
+        }
+        if(i == n-1){
+            cout << "No second min found as all elements are equal" << endl;
+            return;
+        }
+
+        for(int i=0; i<n; i++){
+            if(arr1[i] < min){
+                secondmin = min;
+                min = arr1[i];
+            }
+            else if(arr1[i] < secondmin && arr1[i]!= min){
+                secondmin = arr1[i];
+            }
+        }
+        cout << "Minimum is " << min << endl;
+        cout << "Second Minimum is " << secondmin << endl;
+    }
+
 
 };
 
 int main(){
-    // int arr[] = {2, 5, 1, 3, 0};
+    int arr[] = {2, 5, 1, 3, 0};
     int arr1[] = {5,5,5,5};
-    int arr[] = {8, 10, 5, 7, 9};
+    // int arr[] = {8, 10, 5, 7, 9};
     int size = sizeof(arr) / sizeof(arr[0]);
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+
     findSecondMaxMin fm;
     fm.findSecondMax(arr, size);
-    fm.findSecondMax(arr1, size);
-    // fm.findSecondMin(arr, size);
+    fm.findSecondMax(arr1, size1);
+    fm.findSecondMin(arr, size);
 return 0;
 }
